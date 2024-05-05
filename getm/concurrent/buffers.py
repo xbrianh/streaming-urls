@@ -22,7 +22,11 @@ class SharedCircularBuffer:
             self._did_create = True
         else:
             self._shared_memory = SharedMemory(name)
-        self._view = self._shared_memory.buf
+        # self._view = self._shared_memory.buf
+
+    @property
+    def _view(self):
+        return self._shared_memory.buf
 
     @property
     def size(self):
